@@ -25,6 +25,6 @@ jobs:
           name: Run tests
           command: npm test
       - buildpulse/upload:
-          path: /tmp/file.xml
+          path: /tmp/
           account-id: 80627682
           repository-id: 347846905
