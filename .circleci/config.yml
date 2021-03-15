@@ -1,6 +1,6 @@
 version: 2
 orbs:
-  buildpulse: workshop64/buildpulse@x.y
+  buildpulse: workshop64/buildpulse@0.5.0
 jobs:
   build:
     working_directory: ~/repo
