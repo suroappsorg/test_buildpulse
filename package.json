@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=/tmp/file.xml"
   },
   "author": "Robin Nayathodan",
   "license": "ISC",
@@ -14,5 +14,8 @@
     "express": "^4.17.1",
     "istanbul": "^0.4.5",
     "mocha": "^8.3.2"
+  },
+  "devDependencies": {
+    "mocha-junit-reporter": "^2.0.0"
   }
 }
