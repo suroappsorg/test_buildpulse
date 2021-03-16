@@ -11,7 +11,7 @@ describe('BookController', function () {
       //every odd minute it should fail
       dt=new Date()
       min=dt.getMinutes()
-      let rndNo=(min%2==0)? 0 : (Math.floor(Math.random() * arr.length) + 0);
+      let rndNo=(min%2==0)? 0 : 1;
       const book=Book.getISBN(arr[rndNo]);
 
       expect(book).to.be.an('object');
