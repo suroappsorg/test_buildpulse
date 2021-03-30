@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const helmet = require('helmet');
 const Book=require('./controllers/book')
 
 const app = express()
@@ -10,6 +11,7 @@ const port = 3000
 //test
 //test3
 app.use(cors());
+app.use(helmet());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
