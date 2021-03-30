@@ -2,7 +2,11 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
+var csrf = require('csurf')
 const Book=require('./controllers/book')
+var session = require('express-session')
+
+var csrfProtection = csrf({ cookie: true })
 
 const app = express()
 const port = 3000
@@ -12,11 +16,18 @@ const port = 3000
 //test3
 app.use(cors());
 app.use(helmet());
+app.disable('x-powered-by')
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 's3Cur3',
+  name: 'sessionId'
+}))
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.post('/book', (req, res) => {
+app.post('/book', csrfProtection, (req, res) => {
     const book = req.body;
 
     // output the book to the console for debugging
@@ -26,11 +37,11 @@ app.post('/book', (req, res) => {
     res.send('Book is added to the database');
 });
 
-app.get('/book', (req, res) => {
+app.get('/book', csrfProtection, (req, res) => {
     res.json(Book.list());
 });
 
-app.get('/book/:isbn', (req, res) => {
+app.get('/book/:isbn', csrfProtection, (req, res) => {
     // reading isbn from the URL
     const isbn = req.params.isbn;
     let b=Book.getISBN(isbn);
@@ -50,7 +61,7 @@ app.delete('/book/:isbn', (req, res) => {
     res.send('Book is deleted');
 });
 
-app.post('/book/:isbn', (req, res) => {
+app.post('/book/:isbn', csrfProtection, (req, res) => {
     // reading isbn from the URL
     const isbn = req.params.isbn;
     const newBook = req.body;
