@@ -6,7 +6,7 @@ var csrf = require('csurf')
 const Book=require('./controllers/book')
 var session = require('express-session')
 
-var csrfProtection = csrf({ cookie: true })
+var csrfProtection = csrf({ cookie: { secure: true, httpOnly: true }});
 
 const app = express()
 const port = 3000
@@ -14,13 +14,19 @@ const port = 3000
 //test
 //test
 //test3
-app.use(cors());
+let corsOptions = {
+  origin: 'localhost' // Compliant
+};
+app.use(cors(corsOptions));
 app.use(helmet());
 app.disable('x-powered-by')
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  name: 'sessionId'
+  name: 'sessionId',
+  cookie: {
+    httpOnly: true
+  }
 }))
 
 
