@@ -25,14 +25,14 @@ const setEditModal = (isbn) => {
     document.getElementById('editForm').action = `http://localhost:3000/book/${isbn}`;
 }
 
-const deleteBook = (isbn) => {
+  /*const deleteBook = (isbn) => {
     const xhttp = new XMLHttpRequest();
 
     xhttp.open("DELETE", `http://localhost:3000/book/${isbn}`, false);
     xhttp.send();
 
     location.reload();
-}
+}*/
 
 const loadBooks = () => {
 
