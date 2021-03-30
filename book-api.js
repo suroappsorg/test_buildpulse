@@ -58,7 +58,7 @@ app.get('/book/:isbn', csrfProtection, (req, res) => {
     res.status(404).send('Book not found');
 });
 
-app.delete('/book/:isbn', (req, res) => {
+app.delete('/book/:isbn', csrfProtection, (req, res) => {
     // reading isbn from the URL
     const isbn = req.params.isbn;
     Book.deleteISBN(isbn);
