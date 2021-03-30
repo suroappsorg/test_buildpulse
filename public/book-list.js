@@ -35,13 +35,8 @@ const deleteBook = (isbn) => {
 }
 
 const loadBooks = () => {
-    const xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", "http://localhost:3000/book", false);
-    xhttp.send();
-    var resp=xhttp.responseText || '';
-    try{
-      const books=JSON.parse(resp)
+  $.getJSON("http://localhost:3000/book", function(books){
       for (let book of books) {
           const x = `
               <div class="col-4">
@@ -65,15 +60,17 @@ const loadBooks = () => {
                   </div>
               </div>
           `
-
-          document.getElementById('books').innerHTML = document.getElementById('books').innerHTML + x;
+        var books=$("#books").html();
+        $("#books").html(books+x)
       }
 
-    }catch(e){
-      console.log(e)
-    }
+  });
 
 
 }
 
-loadBooks();
+$(document).ready(function(){
+  loadBooks();
+
+});
+
