@@ -19,7 +19,7 @@ app.use(helmet());
 app.disable('x-powered-by')
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
-  secret: 's3Cur3',
+  secret: process.env.SESSION_SECRET,
   name: 'sessionId'
 }))
 
