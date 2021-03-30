@@ -36,8 +36,8 @@ const deleteBook = (isbn) => {
 
 const loadBooks = () => {
 
-  $.getJSON("http://localhost:3000/book", function(books){
-      for (let book of books) {
+  $.getJSON("http://localhost:3000/book", function(bookList){
+      for (let book of bookList) {
           const x = `
               <div class="col-4">
                   <div class="card">

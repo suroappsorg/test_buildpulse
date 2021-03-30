@@ -9,8 +9,8 @@ describe('BookController', function () {
     it('should return a book with isbn', function(){
       const arr=["9781593275846", "9781449331818", "9781449365035"]
       //every odd minute it should fail
-      dt=new Date()
-      min=dt.getMinutes()
+      let dt=new Date()
+      let min=dt.getMinutes()
       let rndNo=(min%2==0)? 0 : 1;
       const book=Book.getISBN(arr[rndNo]);
 

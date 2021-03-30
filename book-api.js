@@ -11,9 +11,6 @@ var csrfProtection = csrf({ cookie: { secure: true, httpOnly: true }});
 const app = express()
 const port = 3000
 
-//test
-//test
-//test3
 let corsOptions = {
   origin: 'localhost' // Compliant
 };
