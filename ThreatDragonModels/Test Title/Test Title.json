@@ -1,0 +1,18 @@
+{
+  "summary": {
+    "title": "Test Title",
+    "owner": "Robin",
+    "description": "This is test"
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "title": "Test Title",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "id": 0
+      }
+    ],
+    "reviewer": "Ramu"
+  }
+}
